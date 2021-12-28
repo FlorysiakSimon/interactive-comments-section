@@ -21,11 +21,58 @@ body {
 .container {
   display: flex;
   flex-direction: column;
-  background-color: white;
-  padding: 1em;
-  border-radius: 10px;
   margin: 1em auto;
   max-width: 800px;
+}
+
+.wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  padding: 1em;
+  padding-left: 4em;
+  border-radius: 10px;
+  max-width: 800px;
+  min-height: 100px;
+}
+
+.score {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--very-light-gray);
+  width: 30px;
+  height: 90px;
+  align-items: center;
+  border-radius: 5px;
+  position: absolute;
+  left: 12px;
+  top: 20px;
+}
+
+.score span {
+  color: var(--light-grayish-blue);
+
+  font-weight: 700;
+}
+
+.score span:hover {
+  color: var(--moderate-blue);
+}
+
+#score-plus {
+  padding-bottom: 1em;
+  padding-top: 5px;
+  cursor: pointer;
+}
+
+#score-minus {
+  padding-top: 0.7em;
+  cursor: pointer;
+}
+
+#score-total {
+  color: var(--moderate-blue);
 }
 
 .container-header {
@@ -45,4 +92,93 @@ body {
 .container-header-user {
   font-weight: 700;
   color: var(--dark-blue);
+}
+.container-icons {
+  position: absolute;
+  right: 22px;
+  top: 25px;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+}
+.container-icons img {
+  padding-right: 0.3em;
+}
+
+#reply {
+  color: var(--moderate-blue);
+  font-weight: 700;
+  padding-left: 0.3em;
+}
+.reply-icon {
+  padding-left: 1em;
+}
+
+#delete {
+  color: var(--soft-red);
+  font-weight: 700;
+  padding-left: 0.3em;
+}
+
+.container-reply {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  padding: 1em;
+  border-radius: 10px;
+  margin: 1em auto;
+  max-width: 800px;
+  margin-left: 4em;
+  padding-left: 4em;
+}
+
+.container-user {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row;
+  background-color: white;
+  padding: 1em;
+  border-radius: 10px;
+  margin: 1em auto;
+  max-width: 770px;
+}
+textarea,
+textarea:focus {
+  font-size: 16px;
+  font-family: "Rubik", sans-serif;
+  color: var(--grayish-blue);
+  width: 570px;
+  padding: 1em;
+  vertical-align: text-top;
+  height: 80px;
+  outline: none;
+  border: 1px solid var(--moderate-blue);
+  border-radius: 5px;
+  resize: none;
+}
+
+.container-user button {
+  color: white;
+  text-transform: uppercase;
+  padding: 1em 2em;
+  background-color: var(--moderate-blue);
+  border-radius: 5px;
+  border: none;
+  font-weight: 700;
+  height: 50px;
+}
+
+button:hover {
+  opacity: 0.7;
+  cursor: pointer;
+}
+
+.container-current-user {
+  width: 30px;
+  height: 30px;
+}
+
+.attribution {
+  text-align: center;
 }
