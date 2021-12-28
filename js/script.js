@@ -1,7 +1,7 @@
 //LOAD DATA
 const loadData = async () => {
     try {
-        const res = await fetch('../data.json');
+        const res = await fetch('./../data.json');
         data = await res.json();
         displayComments(data)
         writeComments(data)
@@ -13,6 +13,7 @@ const loadData = async () => {
 loadData();
 
 const displayComments = (data) => {
+    const currentName = data.currentUser.username
     const comments = data.comments
     const htmlString = comments
     .map((comments) => {
@@ -21,7 +22,7 @@ const displayComments = (data) => {
             <div class="wrapper">
                 <div class="score">
                     <span id="score-plus">+</span>
-                    <span id="score-total">${comments.score}</span>
+                    <span id="score-total" value=${comments.score}></span>
                     <span id="score-minus">-</span>
                 </div>
                 <div class="container-header">
@@ -45,6 +46,7 @@ const displayComments = (data) => {
                 </div>
                 <div class="container-header">
                     <img src='${comments.user.image.png}' alt="user image" />
+                    
                     <div class="container-header-user">${comments.user.username}</div>
                     <div class="container-header-date">${comments.createdAt}</div>
                 </div>
@@ -64,19 +66,20 @@ const displayComments = (data) => {
     })
     .join('');
     document.querySelector('#comments').innerHTML = htmlString;
+    
 }
 
 
 const writeComments = (data) =>{
     document.querySelector('#write').innerHTML = `
     <div class="container-user">
-     <img class="container-current-user" src='${data.currentUser.image.png}' alt="user image" />
-     <textarea id="new-comment-input" placeholder="Add a comment..."></textarea>
-     <button type="button" id="new-comment">send</button>
-    </div>`
+        <img class="container-current-user" src='${data.currentUser.image.png}' alt="user image" />
+        <textarea id="new-comment-input" placeholder="Add a comment..."></textarea>
+        <button type="button" id="new-comment">send</button>
+    </div>
+    `
 
     document.querySelector('#new-comment').addEventListener("click", (e) =>{
-        console.log(data)
         const commentValue = document.querySelector('#new-comment-input').value;
         data.comments.push({
             id: 3,
@@ -89,7 +92,6 @@ const writeComments = (data) =>{
                 username:data.currentUser.username
             }
         })
-        console.log(commentValue)
         displayComments(data)
 
     })
