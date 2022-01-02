@@ -41,7 +41,7 @@ Then crop/optimize/edit your image however you like, add it to your project, and
 ### Links
 
 - Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [github-pages](https://florysiaksimon.github.io/interactive-comments-section/)
+- Live Site URL: [netlify](https://interactive-comment-section.netlify.app/)
 
 ## My process
 
