@@ -1,5 +1,5 @@
 import React, {useState,useEffect} from 'react'
-import dataJson from '../../data.json'
+import data from '../../data.json'
 import './HomePage.scss'
 import WriteComments from '../../components/WriteComments/WriteComments'
 import ReadComments from '../../components/ReadComments/ReadComments'
@@ -7,22 +7,15 @@ import ReadComments from '../../components/ReadComments/ReadComments'
 
 export default function HomePage() {
 
-    const [data, setData] = React.useState(dataJson);
-    
-    React.useEffect(() => {
-        const data = localStorage.getItem(dataJson);
-        if (data) {
-            setData(JSON.parse(data));
-        }
-      }, []);
-    
-    
-    
- 
+    const username = data.currentUser.username
     
     return (
         <>
-            <ReadComments data={data}/>   
+        
+           {data.comments.map((comments,index) => {
+                   return  <ReadComments key={index} data={comments} isUserName={username}/>
+           })}
+
             <WriteComments data={data} />
         </>
     )
