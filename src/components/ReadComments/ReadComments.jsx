@@ -57,30 +57,34 @@ export default function ReadComments({data,isUserName}) {
                             Reply</span>
                         </div>
                     </div>
-                    {data.replies.map((comments,index)=>{
-                        return  <div key={index} className="container-reply">
-                                    <Score score={comments.score}/>
-                                    <div className="container-header">
-                                        <img src={comments.user.image.png} alt="user" />
-                                        
-                                        <div className="container-header-user">{comments.user.username}</div>
-                                        {isUserName === comments.user.username &&  <span id="you">you</span> }
-                                        <div className="container-header-date">{comments.createdAt}</div>
+
+                    <div className="border">
+                        {data.replies.map((comments,index)=>{
+                            return  <div key={index} className="container-reply">
+                                        <Score score={comments.score}/>
+                                        <div className="container-header">
+                                            <img src={comments.user.image.png} alt="user" />
+                                            
+                                            <div className="container-header-user">{comments.user.username}</div>
+                                            {isUserName === comments.user.username &&  <span id="you">you</span> }
+                                            <div className="container-header-date">{comments.createdAt}</div>
+                                        </div>
+                                        <p>{comments.content}</p>
+                                        <div className="container-icons">
+                                        {isUserName === comments.user.username &&   <span className="delete" onClick={toggleModal} data-value={comments.id} >
+                                                <img className="delete-icon" src="/images/icon-delete.svg" alt="delete-icon"></img>
+                                            Delete</span> }
+                                        {isUserName !== comments.user.username ? <span className="reply" data-value={comments.id}>
+                                                <img className="reply-icon" src="/images/icon-reply.svg" alt="reply-icon"></img>
+                                            Reply</span>  
+                                            :  <span className="reply" data-value={comments.id}>
+                                                <img className="edit-icon" src="/images/icon-edit.svg" alt="edit-icon"></img>
+                                            Edit</span>}
+                                        </div>
                                     </div>
-                                    <p>{comments.content}</p>
-                                    <div className="container-icons">
-                                    {isUserName === comments.user.username &&   <span className="delete" onClick={toggleModal} data-value={comments.id} >
-                                            <img className="delete-icon" src="/images/icon-delete.svg" alt="delete-icon"></img>
-                                        Delete</span> }
-                                    {isUserName !== comments.user.username ? <span className="reply" data-value={comments.id}>
-                                            <img className="reply-icon" src="/images/icon-reply.svg" alt="reply-icon"></img>
-                                        Reply</span>  
-                                        :  <span className="reply" data-value={comments.id}>
-                                            <img className="edit-icon" src="/images/icon-edit.svg" alt="edit-icon"></img>
-                                        Edit</span>}
-                                     </div>
-                                </div>
-                    })}
+                        })}
+                    </div>
+                    
                 </div>
                 <Modal modalOpen={modalOpen} modalClose={toggleModal} deleteComment={deleteComment}/>
         </div>

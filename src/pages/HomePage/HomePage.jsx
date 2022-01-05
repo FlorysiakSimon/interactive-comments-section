@@ -1,4 +1,4 @@
-import React, {useState,useEffect} from 'react'
+import React from 'react'
 import data from '../../data.json'
 import './HomePage.scss'
 import WriteComments from '../../components/WriteComments/WriteComments'
@@ -10,13 +10,13 @@ export default function HomePage() {
     const username = data.currentUser.username
     
     return (
-        <>
+        <section>
         
            {data.comments.map((comments,index) => {
                    return  <ReadComments key={index} data={comments} isUserName={username}/>
            })}
 
             <WriteComments data={data} />
-        </>
+        </section>
     )
 }
