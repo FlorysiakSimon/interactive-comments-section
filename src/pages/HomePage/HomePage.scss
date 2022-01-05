@@ -63,7 +63,7 @@ body {
     cursor: pointer;
   }
   &-total {
-    color: $moderate-blue;
+    color: $moderate-blue !important;
   }
 }
 
@@ -90,8 +90,10 @@ body {
   display: flex;
   align-items: center;
   flex-direction: row;
-  &img {
-    padding-right: 0.3em;
+  & span {
+    & img {
+      padding-right: 0.3em;
+    }
   }
 }
 
@@ -181,4 +183,30 @@ button:hover {
 
 .attribution {
   text-align: center;
+}
+
+@media (max-width: 560px) {
+  .score {
+    flex-direction: row;
+    justify-content: space-around;
+    width: 80px;
+    height: 30px;
+    top: 194px;
+    &-plus {
+      padding: 0;
+    }
+    &-minus {
+      padding: 0;
+    }
+  }
+
+  .container-reply,
+  .wrapper {
+    min-height: 200px;
+    padding-left: 1em;
+  }
+  .container-icons {
+    position: absolute;
+    top: 200px;
+  }
 }

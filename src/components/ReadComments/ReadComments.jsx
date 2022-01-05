@@ -1,5 +1,6 @@
 import React from 'react'
 import Modal from '../Modal/Modal';
+import Score from '../Score/Score';
 
 export default function ReadComments({data,isUserName}) {
 
@@ -19,23 +20,26 @@ export default function ReadComments({data,isUserName}) {
     // const username = data.currentUser.username
     // console.log(username)
     // console.log(data)
-
+    
     const [modalOpen, setModalOpen] = React.useState(false)
 
     const toggleModal = () =>{
         setModalOpen(!modalOpen);
     }
 
+    const deleteComment = ()=>{
+        console.log('delete')
+        toggleModal()
+    }
+
+    
+
     return (
         
         <div>
             <div  className="container">
                     <div className="wrapper">
-                        <div className="score">
-                            <span className="score-plus">+</span>
-                            <span className="score-total" data-value={data.score}>{data.score}</span>
-                            <span className="score-minus">-</span>
-                        </div>
+                        <Score score={data.score}/>
                         <div className="container-header">
                             <img src={data.user.image.png} alt="user" />
                            <div className="container-header-user">{data.user.username}</div>
@@ -55,11 +59,7 @@ export default function ReadComments({data,isUserName}) {
                     </div>
                     {data.replies.map((comments,index)=>{
                         return  <div key={index} className="container-reply">
-                                    <div className="score">
-                                        <span className="score-plus">+</span>
-                                        <span className="score-total">{comments.score}</span>
-                                        <span className="score-minus">-</span>
-                                    </div>
+                                    <Score score={comments.score}/>
                                     <div className="container-header">
                                         <img src={comments.user.image.png} alt="user" />
                                         
@@ -82,7 +82,7 @@ export default function ReadComments({data,isUserName}) {
                                 </div>
                     })}
                 </div>
-                <Modal modalOpen={modalOpen} modalClose={toggleModal} />
+                <Modal modalOpen={modalOpen} modalClose={toggleModal} deleteComment={deleteComment}/>
         </div>
     )
 }
