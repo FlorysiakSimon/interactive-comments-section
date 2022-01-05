@@ -1,0 +1,54 @@
+.modal {
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: fixed;
+  &Overlay {
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    position: fixed;
+    background: hsl(211, 10%, 45%);
+    opacity: 0.8;
+  }
+  &Content {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    line-height: 1.4;
+    background: white;
+    padding: 14px 28px;
+    border-radius: 8px;
+    max-width: 320px;
+    & h2 {
+      color: hsl(212, 24%, 26%);
+    }
+    & p {
+      text-align: justify;
+    }
+    &Buttons {
+      display: flex;
+      & button {
+        text-transform: uppercase;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        padding: 1em 2em;
+      }
+      &Close {
+        background-color: hsl(211, 10%, 45%);
+        margin-right: 1em;
+      }
+      &Delete {
+        background-color: hsl(358, 79%, 66%);
+      }
+    }
+  }
+}

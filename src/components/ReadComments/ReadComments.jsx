@@ -1,4 +1,5 @@
 import React from 'react'
+import Modal from '../Modal/Modal';
 
 export default function ReadComments({data,isUserName}) {
 
@@ -18,6 +19,13 @@ export default function ReadComments({data,isUserName}) {
     // const username = data.currentUser.username
     // console.log(username)
     // console.log(data)
+
+    const [modalOpen, setModalOpen] = React.useState(false)
+
+    const toggleModal = () =>{
+        setModalOpen(!modalOpen);
+    }
+
     return (
         
         <div>
@@ -61,7 +69,7 @@ export default function ReadComments({data,isUserName}) {
                                     </div>
                                     <p>{comments.content}</p>
                                     <div className="container-icons">
-                                    {isUserName === comments.user.username &&   <span className="delete" data-value={comments.id} >
+                                    {isUserName === comments.user.username &&   <span className="delete" onClick={toggleModal} data-value={comments.id} >
                                             <img className="delete-icon" src="/images/icon-delete.svg" alt="delete-icon"></img>
                                         Delete</span> }
                                     {isUserName !== comments.user.username ? <span className="reply" data-value={comments.id}>
@@ -74,6 +82,7 @@ export default function ReadComments({data,isUserName}) {
                                 </div>
                     })}
                 </div>
+                <Modal modalOpen={modalOpen} modalClose={toggleModal} />
         </div>
     )
 }
