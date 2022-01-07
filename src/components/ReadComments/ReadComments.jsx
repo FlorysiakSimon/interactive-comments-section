@@ -2,7 +2,7 @@ import React from 'react'
 import Modal from '../Modal/Modal';
 import Score from '../Score/Score';
 
-export default function ReadComments({data,isUserName}) {
+export default function ReadComments({data,isUserName,deleteComment,toggleModal}) {
 
     // const deleteComments = (event) =>{
     //     event.preventDefault();
@@ -21,17 +21,7 @@ export default function ReadComments({data,isUserName}) {
     // console.log(username)
     // console.log(data)
     
-    const [modalOpen, setModalOpen] = React.useState(false)
-
-    const toggleModal = () =>{
-        setModalOpen(!modalOpen);
-    }
-
-    const deleteComment = ()=>{
-        console.log('delete')
-        toggleModal()
-    }
-
+   
     
 
     return (
@@ -86,7 +76,7 @@ export default function ReadComments({data,isUserName}) {
                     </div>
                     
                 </div>
-                <Modal modalOpen={modalOpen} modalClose={toggleModal} deleteComment={deleteComment}/>
+             
         </div>
     )
 }
