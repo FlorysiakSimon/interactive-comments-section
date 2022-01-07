@@ -2,7 +2,7 @@ import React from 'react'
 import Modal from '../Modal/Modal';
 import Score from '../Score/Score';
 
-export default function ReadComments({data,isUserName,deleteComment,toggleModal}) {
+export default function ReadComments({data,isUserName}) {
 
     // const deleteComments = (event) =>{
     //     event.preventDefault();
@@ -21,8 +21,16 @@ export default function ReadComments({data,isUserName,deleteComment,toggleModal}
     // console.log(username)
     // console.log(data)
     
-   
-    
+    const [modalOpen, setModalOpen] = React.useState(false)
+
+    const toggleModal = () =>{
+        setModalOpen(!modalOpen);
+    }
+
+    const deleteComment = ()=>{
+        console.log('delete')
+        toggleModal()
+    }
 
     return (
         
@@ -38,10 +46,12 @@ export default function ReadComments({data,isUserName,deleteComment,toggleModal}
                         </div>
                         <p>{data.content}</p>
                         <div className="container-icons">
-                        {isUserName === data.user.username && <span className="delete" data-value={data.id}>
+                        {isUserName === data.user.username && 
+                        <span className="delete" onClick={toggleModal} data-value={data.id}>
                                 <img className="delete-icon" src="/images/icon-delete.svg" alt="delete-icon"></img>
                             Delete
-                            </span> }
+                            </span> 
+                            }
                             <span className="reply" data-value={data.id}>
                                 <img className="reply-icon" src="/images/icon-reply.svg" alt="reply-icon"></img>
                             Reply</span>
@@ -76,7 +86,7 @@ export default function ReadComments({data,isUserName,deleteComment,toggleModal}
                     </div>
                     
                 </div>
-             
+                 <Modal modalOpen={modalOpen} modalClose={toggleModal} deleteComment={deleteComment}/>  
         </div>
     )
 }

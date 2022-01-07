@@ -24,10 +24,9 @@ export default function HomePage({data}) {
         // .then(response => response.json())
         
         // .then(json => setComments(json))
-        console.log('zeb')
-    }, [setComments])
+        console.log('new-comment' + comments)
+    }, [comments])
 
-    console.log(comments)
     const addComment = () =>{
 
         const newComment = {
@@ -51,10 +50,10 @@ export default function HomePage({data}) {
         <Modal modalOpen={modalOpen} modalClose={toggleModal} deleteComment={deleteComment}/>
         
         <section>
-          <div class="commentList">
-           {comments.map((comments,index) => {
-                   return  <ReadComments key={index} data={comments} isUserName={username} toggleModal={toggleModal} deleteComment={deleteComment}/>
-           })}
+          <div className="commentList">
+            {comments.map((comments,index) => {
+                return  <ReadComments key={index} data={comments} isUserName={username} toggleModal={toggleModal} deleteComment={deleteComment}/>
+            })}
           </div>
           <WriteComments data={user} addComment={addComment}/>
         </section>
